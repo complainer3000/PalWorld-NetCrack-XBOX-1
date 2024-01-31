@@ -34,7 +34,6 @@ namespace DX11_Base {
 		MH_DisableHook((Tick)(Config.ClientBase + Config.offset_Tick));
 		MH_RemoveHook((Tick)(Config.ClientBase + Config.offset_Tick));
 		g_Console->DestroyConsole();
-		g_Running = FALSE;
 		return;
 	}
 }
