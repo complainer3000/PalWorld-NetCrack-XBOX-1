@@ -17,7 +17,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  dwCallReason, LPVOID lpReserved)
             break;
         }
         case (DLL_PROCESS_DETACH): {
-            g_KillSwitch = TRUE;
+            g_Running = false;
             break;
         }
     }

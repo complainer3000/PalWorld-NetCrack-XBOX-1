@@ -22,7 +22,7 @@ void ClientBGThread()
 DWORD WINAPI MainThread_Initialize()
 {
     g_Console = std::make_unique<Console>();
-#if DEBUG
+#if __DEBUG
     g_Console->InitializeConsole("Debug Console");
     g_Console->printdbg("ImGui Hook - Initializing . . .\n\n", Console::Colors::DEFAULT);
 #endif
@@ -36,12 +36,9 @@ DWORD WINAPI MainThread_Initialize()
     g_Menu = std::make_unique<Menu>();
     g_Hooking->Hook();
 
-#if DEBUG
+#if __DEBUG
     g_Console->printdbg("Main::Initialized\nUWorld:\t0x%llX\n", Console::Colors::green, Config.gWorld);
 #endif
-
-    ///  RENDER LOOP
-    g_Running = TRUE; 
     
     std::thread WCMUpdate(ClientBGThread); // Initialize Loops Thread
     while (g_Running)
@@ -52,14 +49,9 @@ DWORD WINAPI MainThread_Initialize()
             g_GameVariables->m_ShowHud = !g_GameVariables->m_ShowMenu;
         
         }
-
-
-        if (g_KillSwitch)
-        {
-            g_KillSwitch = false;
-            g_Hooking->Unhook();
-        }
     }
+
+    g_Hooking->Unhook();
 
     ///  EXIT
     WCMUpdate.join(); // Exit Loops Thread

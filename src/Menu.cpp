@@ -196,7 +196,7 @@ namespace DX11_Base
                 g_Console->printdbg("\n\n[+] UNHOOK INITIALIZED [+]\n\n", Console::Colors::red);
 
 #endif
-                g_KillSwitch = TRUE;
+                g_Running = false;
             }
         }
         

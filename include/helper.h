@@ -1,5 +1,4 @@
 #pragma once
-#define DEBUG 1
 
 //	External Libraries
 #include "../libs/ImGui/imgui.h"
@@ -12,8 +11,7 @@ namespace DX11_Base
 	using namespace std::chrono_literals;
 	inline HMODULE g_hModule{};
 	inline LPCWSTR g_ModuleName{};
-	inline std::atomic_bool g_Running{};
-	inline std::atomic_bool g_KillSwitch = FALSE;
+	inline bool g_Running = true;
 	static uintptr_t dwGameBase{};
 
 	struct Vector2 {
