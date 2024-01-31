@@ -60,12 +60,12 @@ namespace DX11_Base {
 			CreateHook(8, (void**)&oIDXGISwapChainPresent, HookPresent);
 			CreateHook(12, (void**)&oID3D11DrawIndexed, MJDrawIndexed);
 			Sleep(1000);
-#if DEBUG
+#if __DEBUG
 			g_Console->printdbg("D3D11Window::Hook Initialized\n", Console::Colors::pink);
 #endif
 			return TRUE;
 		}
-#if DEBUG
+#if __DEBUG
 		g_Console->printdbg("[+] D3D11Window::Hook Failed to Initialize\n", Console::Colors::red);
 #endif
 		return FALSE;
@@ -165,7 +165,7 @@ namespace DX11_Base {
 		if (WindowHwnd == NULL) {
 			return FALSE;
 		}
-#if DEBUG
+#if __DEBUG
 		g_Console->printdbg("D3D11Window::Window Created\n", Console::Colors::pink);
 #endif
 		return TRUE;
@@ -178,7 +178,7 @@ namespace DX11_Base {
 		if (WindowHwnd != NULL) {
 			return FALSE;
 		}
-#if DEBUG
+#if __DEBUG
 		g_Console->printdbg("D3D11Window::Window Destroyed\n", Console::Colors::pink);
 #endif
 		return TRUE;
@@ -211,7 +211,7 @@ namespace DX11_Base {
 			b_ImGui_Initialized = TRUE;
 			pImGui = GImGui;
 			pViewport = pImGui->Viewports[0];
-#if DEBUG
+#if __DEBUG
 			g_Console->printdbg("D3D11Window::Swapchain Initialized\n", Console::Colors::pink);
 #endif
 			return 1;
